@@ -1,7 +1,17 @@
-function Square(props) {
+import React, { Component, Fragment } from 'react';
+import { clickSquare } from './actions';
+
+function Square({gameId, square}) {
+  const onClick = () => {
+    clickSquare({
+      gameId: gameId
+      squareId: square.id
+    })
+  }
+
   return (
     <button className="square" onClick={props.onClick}>
-      {props.value}
+      {square.value}
     </button>
   );
 }

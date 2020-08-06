@@ -4,7 +4,7 @@ import {
   FETCH_GAME_ERROR,
   GAMES_KEY,
 } from './constants';
-import { dataApiGet } from '../../utils/requester';
+import { dataApiGet, dataApiPost } from '../../utils/requester';
 
 
 const fetchingGame = () => {
@@ -18,6 +18,13 @@ const fetchGameSuccess = (games) => {
     type: FETCH_GAME_SUCCESS,
     games
   }
+}
+
+export const clickSquare = ({gameId, squareId}) => {
+  dataApiPost({
+    path: `/api/games/${gameId}/squares/${squareId}/claim`,
+    data: {}
+  })
 }
 
 export const fetchGame = (dispatch) => {
